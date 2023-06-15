@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Constants } from '../config/constants';
 
 
 @Injectable({
@@ -9,13 +10,12 @@ import { Observable } from 'rxjs';
 export class DataService {
 
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
+    private url:Constants
   ) { }
 
-  url :string = "https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json";
-  
   getCountries():Observable<any> {
-    return this.http.get(this.url)
+    return this.http.get(this.url.remoteEndpointUrl)
   }
 
 }
